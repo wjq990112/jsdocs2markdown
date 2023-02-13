@@ -1,7 +1,6 @@
 import { join } from 'node:path';
 import read from './read';
 import parser from '@';
-import { type ParserResult, type Prop } from '@/types';
 
 function readComp(path: string) {
   return read(join('./components', path));
