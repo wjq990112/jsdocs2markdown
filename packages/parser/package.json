@@ -1,0 +1,16 @@
+{
+  "name": "@jsxdocgen/parser",
+  "version": "1.0.0",
+  "description": "",
+  "author": "J4ck W4n9<1163585385@qq.com>",
+  "scripts": {
+    "test": "vitest",
+    "test:cov": "vitest run --coverage"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^18.0.28",
+    "ts-morph": "^17.0.1",
+    "vitest": "^0.28.4"
+  }
+}

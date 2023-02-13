@@ -1,0 +1,114 @@
+// Vitest Snapshot v1
+
+exports[`components with nothing > should get component name from FunctionDeclaration 1`] = `
+{
+  "Normal": {
+    "methods": [],
+    "name": "Normal",
+    "props": [],
+  },
+  "default": {
+    "methods": [],
+    "name": "Default",
+    "props": [],
+  },
+}
+`;
+
+exports[`components with nothing > should get component name from VariableDeclaration 1`] = `
+{
+  "Normal": {
+    "methods": [],
+    "name": "Normal",
+    "props": [],
+  },
+  "default": {
+    "methods": [],
+    "name": "Default",
+    "props": [],
+  },
+}
+`;
+
+exports[`components with props > should get component props from FunctionDeclaration 1`] = `
+{
+  "Extends": {
+    "methods": [
+      {
+        "name": "onClick",
+        "params": "evt: MouseEvent
+index: number",
+        "required": true,
+        "returns": "void",
+      },
+      {
+        "name": "onDoubleClick",
+        "params": "evt: MouseEvent",
+        "required": false,
+        "returns": "void",
+      },
+    ],
+    "name": "Extends",
+    "props": [
+      {
+        "name": "required",
+        "required": true,
+        "type": "true",
+      },
+      {
+        "name": "notRequired",
+        "required": false,
+        "type": "false",
+      },
+    ],
+  },
+  "Named": {
+    "methods": [],
+    "name": "Named",
+    "props": [
+      {
+        "name": "required",
+        "required": true,
+        "type": "true",
+      },
+      {
+        "name": "notRequired",
+        "required": false,
+        "type": "false",
+      },
+    ],
+  },
+  "Normal": {
+    "methods": [],
+    "name": "Normal",
+    "props": [
+      {
+        "name": "required",
+        "required": true,
+        "type": "true",
+      },
+      {
+        "name": "notRequired",
+        "required": false,
+        "type": "false",
+      },
+    ],
+  },
+  "default": {
+    "methods": [],
+    "name": "Default",
+    "props": [
+      {
+        "name": "required",
+        "required": true,
+        "type": "true",
+      },
+      {
+        "name": "notRequired",
+        "required": false,
+        "type": "false",
+      },
+    ],
+  },
+}
+`;
