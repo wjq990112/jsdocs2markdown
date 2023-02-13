@@ -1,6 +1,6 @@
 # jsxdocgen
 
-A universal tools to generate components document from component file.
+A universal tool for generating component documentation from component files.
 
 ## Features
 
