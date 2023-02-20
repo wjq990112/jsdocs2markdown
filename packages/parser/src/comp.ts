@@ -2,6 +2,8 @@ import { type ParserResult, type Prop, type Method } from './types';
 import {
   type SourceFile,
   type ExportedDeclarations,
+  type Type,
+  type ts,
   Project,
   SyntaxKind,
 } from 'ts-morph';
@@ -56,6 +58,79 @@ export function getComponentName(ast: SourceFile, exportedName: string) {
   return getFunctionDecl(ast, componentName);
 }
 
+export function serializePropsAndMethods(
+  type?: Type<ts.Type>
+): [Prop[], Method[]] {
+  const props: Prop[] = [];
+  const methods: Method[] = [];
+
+  // get all properties in type
+  type?.getProperties().forEach((symbol) => {
+    const p = symbol.getValueDeclarationOrThrow();
+    const propIdentifier = p.getFirstChildByKindOrThrow(SyntaxKind.Identifier);
+    const propType = propIdentifier.getType();
+    if (p.isKind(SyntaxKind.PropertySignature)) {
+      const name = propIdentifier.getText();
+      const type = propType.getText();
+      const required = !p.hasQuestionToken();
+
+      if (propType.isObject()) {
+        // methods
+        const [signature] = propType.getCallSignatures();
+        const type = signature.getDeclaration();
+
+        //? Is this the best way to judge a function type?
+        if (!type.isKind(SyntaxKind.FunctionType)) {
+          return;
+        }
+
+        const params = type
+          .getParameters()
+          .map((p) => p.getText())
+          .join('\n');
+        const returns = type.getReturnType().getText();
+
+        methods.push({
+          name,
+          params,
+          returns,
+          required,
+        });
+      } else {
+        // properties
+        props.push({
+          name,
+          type,
+          required,
+        });
+      }
+    } else if (p.isKind(SyntaxKind.MethodSignature)) {
+      const name = propIdentifier.getText();
+      const [signature] = propType.getCallSignatures();
+      const type = signature.getDeclaration();
+      const typeSignature = type.getSignature();
+      const params = typeSignature
+        .getParameters()
+        .map((p) => {
+          const param = p.getValueDeclarationOrThrow();
+          return param.getText();
+        })
+        .join('\n');
+      const returns = typeSignature.getReturnType().getText();
+      const required = !p.hasQuestionToken();
+
+      methods.push({
+        name,
+        params,
+        returns,
+        required,
+      });
+    }
+  });
+
+  return [props, methods];
+}
+
 export function getComponentPropsAndMethods(
   ast: SourceFile,
   componentName: string
@@ -73,8 +148,14 @@ export function getComponentPropsAndMethods(
 
   if (variableDeclaration) {
     const decl = variableDeclaration;
+    // `const Foo = (props: Props) => {}` => `(props: Props) => {}`
+    const arrowFunc = decl.getFirstChildByKindOrThrow(SyntaxKind.ArrowFunction);
     // `const Foo = (props: Props) => {}` => `props: Props`
-    // TODO
+    const param = arrowFunc.getFirstChildByKind(SyntaxKind.Parameter);
+    // `const Foo = (props: Props) => {}` => `Props`
+    const type = param?.getType();
+
+    return serializePropsAndMethods(type);
   }
 
   // `function Foo() {}`
@@ -86,72 +167,8 @@ export function getComponentPropsAndMethods(
     const param = decl.getFirstChildByKind(SyntaxKind.Parameter);
     // `function Foo(props: Props) {}` => `Props`
     const type = param?.getType();
-    // get all properties in type
-    type?.getProperties().forEach((symbol) => {
-      const p = symbol.getValueDeclarationOrThrow();
-      const propIdentifier = p.getFirstChildByKindOrThrow(
-        SyntaxKind.Identifier
-      );
-      const propType = propIdentifier.getType();
-      if (p.isKind(SyntaxKind.PropertySignature)) {
-        const name = propIdentifier.getText();
-        const type = propType.getText();
-        const required = !p.hasQuestionToken();
 
-        if (propType.isObject()) {
-          // methods
-          const [signature] = propType.getCallSignatures();
-          const type = signature.getDeclaration();
-
-          //? Is this the best way to judge a function type?
-          if (!type.isKind(SyntaxKind.FunctionType)) {
-            return;
-          }
-
-          const params = type
-            .getParameters()
-            .map((p) => p.getText())
-            .join('\n');
-          const returns = type.getReturnType().getText();
-
-          methods.push({
-            name,
-            params,
-            returns,
-            required,
-          });
-        } else {
-          // properties
-          props.push({
-            name,
-            type,
-            required,
-          });
-        }
-      } else if (p.isKind(SyntaxKind.MethodSignature)) {
-        const name = propIdentifier.getText();
-        const [signature] = propType.getCallSignatures();
-        const type = signature.getDeclaration();
-        const typeSignature = type.getSignature();
-        const params = typeSignature
-          .getParameters()
-          .map((p) => {
-            const param = p.getValueDeclarationOrThrow();
-            return param.getText();
-          })
-          .join('\n');
-        const returns = typeSignature.getReturnType().getText();
-        const required = !p.hasQuestionToken();
-
-        methods.push({
-          name,
-          params,
-          returns,
-          required,
-        });
-      }
-    });
-    return [props, methods];
+    return serializePropsAndMethods(type);
   }
 
   return [props, methods];

@@ -23,4 +23,9 @@ describe('components with props', () => {
     const source = readComp('FunctionDeclarationWithProps.tsx');
     expect(parser(source)).toMatchSnapshot();
   });
+
+  it('should get component props from VariableDeclaration', () => {
+    const source = readComp('VariableDeclarationWithProps.tsx');
+    expect(parser(source)).toMatchSnapshot();
+  });
 });
