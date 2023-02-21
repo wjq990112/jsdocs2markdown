@@ -4,6 +4,8 @@
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@types/node": "^18.14.0",
+    "@types/react": "^18.0.28",
     "husky": "^8.0.3"
   }
 }
