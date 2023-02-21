@@ -5,6 +5,9 @@
   "author": "J4ck W4n9<1163585385@qq.com>",
   "main": "./dist/cjs/index.js",
   "types": "./dist/cjs/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf ./dist",
     "dev": "father dev",

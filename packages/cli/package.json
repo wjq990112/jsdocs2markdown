@@ -9,6 +9,9 @@
     "jdg": "./bin/index.js",
     "jsxdocgen": "./bin/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rm -rf ./dist",
     "dev": "father dev",
