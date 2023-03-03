@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 importers:
 
@@ -25,7 +25,7 @@ importers:
       chalk: 5.2.0
       commander: 10.0.0
     devDependencies:
-      father: 4.1.5_@types+node@18.14.0
+      father: 4.1.5
       typescript: 4.9.5
       vitest: 0.28.5
 
@@ -40,7 +40,7 @@ importers:
       ts-morph: 17.0.1
     devDependencies:
       '@vitest/coverage-c8': 0.28.5
-      father: 4.1.5_@types+node@18.14.0
+      father: 4.1.5
       typescript: 4.9.5
       vitest: 0.28.5
 
@@ -322,7 +322,7 @@ packages:
     peerDependencies:
       postcss: ^8.2
     dependencies:
-      '@csstools/selector-specificity': 2.1.1_b0132eb4833290a175e2a58939fd6432
+      '@csstools/selector-specificity': 2.1.1_wajs5nedgkikc5pcuwett7legi
       postcss: 8.4.21
       postcss-selector-parser: 6.0.11
     dev: true
@@ -377,7 +377,7 @@ packages:
       postcss: 8.4.21
     dev: true
 
-  /@csstools/selector-specificity/2.1.1_b0132eb4833290a175e2a58939fd6432:
+  /@csstools/selector-specificity/2.1.1_wajs5nedgkikc5pcuwett7legi:
     resolution: {integrity: sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==}
     engines: {node: ^14 || ^16 || >=18}
     peerDependencies:
@@ -648,24 +648,24 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-extractor-model/7.26.3_@types+node@18.14.0:
+  /@microsoft/api-extractor-model/7.26.3:
     resolution: {integrity: sha512-1Y/JOkaCF5zE6P56saA0yPzEb7ZJwoF2d8fUYdzZY4I0p1gmqGbNk1h9WguvrN5hANg+2CaqcOX0eh+l4SAhJw==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.55.1_@types+node@18.14.0
+      '@rushstack/node-core-library': 3.55.1
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor/7.34.3_@types+node@18.14.0:
+  /@microsoft/api-extractor/7.34.3:
     resolution: {integrity: sha512-vXpU+i/MMinVzDxbLo3of1Sx/IS5bwOZl4XrX8YyqNBXFvovEer5ex0wckWumkBErDZtLOMp3zhZfYL3W7h3cg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.26.3_@types+node@18.14.0
+      '@microsoft/api-extractor-model': 7.26.3
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.55.1_@types+node@18.14.0
+      '@rushstack/node-core-library': 3.55.1
       '@rushstack/rig-package': 0.3.17
       '@rushstack/ts-command-line': 4.13.1
       colors: 1.2.5
@@ -747,7 +747,7 @@ packages:
       source-map: 0.7.4
     dev: true
 
-  /@rushstack/node-core-library/3.55.1_@types+node@18.14.0:
+  /@rushstack/node-core-library/3.55.1:
     resolution: {integrity: sha512-t/nZHq4/4S3ltpYVyIsbbIqmcZx3qEe3Aaw8tI9B6XRNqCFzPxtoTopqTPTuRn8XqCtoDaSe6uMlnn7YCTu8lQ==}
     peerDependencies:
       '@types/node': '*'
@@ -755,7 +755,6 @@ packages:
       '@types/node':
         optional: true
     dependencies:
-      '@types/node': 18.14.0
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -2183,11 +2182,11 @@ packages:
     dependencies:
       reusify: 1.0.4
 
-  /father/4.1.5_@types+node@18.14.0:
+  /father/4.1.5:
     resolution: {integrity: sha512-xlv+G1lQjaf4yDMx1scHJy27slV+KbUTZKDhBQOoiBTHnxxABmlU/LAVPouuhh+2x3zHfsGf9DvDyYOjLjXoFg==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor': 7.34.3_@types+node@18.14.0
+      '@microsoft/api-extractor': 7.34.3
       '@umijs/babel-preset-umi': 4.0.52
       '@umijs/bundler-utils': 4.0.52
       '@umijs/bundler-webpack': 4.0.52_typescript@4.8.4
@@ -2930,6 +2929,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -2939,6 +2939,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -2948,6 +2949,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -2957,6 +2959,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -3695,7 +3698,7 @@ packages:
     peerDependencies:
       postcss: ^8.2
     dependencies:
-      '@csstools/selector-specificity': 2.1.1_b0132eb4833290a175e2a58939fd6432
+      '@csstools/selector-specificity': 2.1.1_wajs5nedgkikc5pcuwett7legi
       postcss: 8.4.21
       postcss-selector-parser: 6.0.11
     dev: true
