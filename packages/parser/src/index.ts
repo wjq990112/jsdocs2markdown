@@ -1,8 +1,9 @@
-import { parser as compParser } from './comp';
-// import { parser as funcParser } from './func';
-export * from './comp';
-// export * from './func';
+import { parser as componentParser } from './comp';
+import { parser as functionParser } from './func';
 
 export default function parser(source: string) {
-  return compParser(source);
+  return componentParser(source);
 }
+
+export { parser as componentParser } from './comp';
+export { parser as functionParser } from './func';

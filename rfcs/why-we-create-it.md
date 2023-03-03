@@ -49,9 +49,10 @@ export default Button;
 
 ## 社区内同类产品
 
-- [`react-docgen`](https://github.com/reactjs/react-docgen) React 官方社区的工具，对 TypeScript 的支持一般，主要通过解析 PropType 获取 props 类型
-- [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript) `react-docgen` 的升级版，提供了更强大的 TypeScript 支持，但缺乏插件机制，无法自定义输出的模板
-- [`ts-document`](https://github.com/PengJiyuan/ts-document#readme) Arco Design 的同学正在使用的工具，通过非标准 JSDoc/TSDoc 的方式获取需要的信息，没有代码结构分析的能力，无法拿到注释以外的信息
+- [`react-docgen`](https://github.com/reactjs/react-docgen)：React 官方社区的工具，对 TypeScript 的支持一般，主要通过解析 PropType 获取 props 类型
+- [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript)：`react-docgen` 的升级版，提供了更强大的 TypeScript 支持，但缺乏插件机制，无法自定义输出的模板
+- [`ts-document`](https://github.com/PengJiyuan/ts-document#readme)：Arco Design 的同学正在使用的工具，通过非标准 JSDoc/TSDoc 的方式获取需要的信息，没有代码结构分析的能力，无法拿到注释以外的信息
+- [`Vuese`](https://github.com/vuese/vuese)：Vue 社区中的组件文档生成工具，通过编译的方式获取代码和注释生成文档，目前来看不支持 Vue 3
 - &etc.（待补充）
 
 ## 目标
@@ -97,5 +98,5 @@ console.log(markdown); // markdown file content
 
 ## 要做什么？
 
-[ ] CLI
-[ ] 插件系统
+- [ ] CLI
+- [ ] 插件系统
