@@ -11,10 +11,12 @@
   "scripts": {
     "clean": "rm -rf ./dist",
     "dev": "father dev",
+    "start": "pnpm run dev",
     "build": "father build",
     "test": "vitest",
     "test:cov": "vitest run --coverage",
-    "prepublishOnly": "pnpm run clean && pnpm run build && pnpm run test:cov"
+    "doctor": "father doctor",
+    "prepublishOnly": "pnpm run clean && pnpm run build"
   },
   "license": "MIT",
   "dependencies": {

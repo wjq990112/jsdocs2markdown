@@ -1,7 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev": "pnpm run -r --parallel dev",
+    "start": "pnpm run -r --parallel start",
+    "build": "pnpm run -r --stream build",
+    "test": "pnpm run -r --parallel test",
+    "test:cov": "pnpm run -r --parallel test:cov",
+    "doctor": "pnpm run -r doctor"
   },
   "devDependencies": {
     "@types/node": "^18.14.0",
